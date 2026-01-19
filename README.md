@@ -92,6 +92,7 @@ Extract and add the bin folder to PATH
 
 ### 4. Run the Development Server
 npm run dev
+```
 
 ## Application Flow
 User starts screen recording
