@@ -69,7 +69,10 @@ screen-recorder-mvp/
 │
 └── README.md
 
-## Setup Instructions
+
+---
+
+## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
 
@@ -77,42 +80,20 @@ screen-recorder-mvp/
 git clone https://github.com/DashwantGanesh/screen-recorder-mvp
 cd screen-recorder-mvp
 
-2. Install Dependencies
-bash
-Copy code
+
+### 2. Install Dependencies
 npm install
-3. Install FFmpeg (Required for Trimming)
+
+### 3. Install FFmpeg (Required for Trimming)
 Windows
+
 Download from: https://www.gyan.dev/ffmpeg/builds/
-
 Extract and add the bin folder to PATH
-Example:
 
-makefile
-Copy code
-C:\ffmpeg\ffmpeg-8.0.1-essentials_build\bin
-Verify installation:
-
-bash
-Copy code
-ffmpeg -version
-macOS
-bash
-Copy code
-brew install ffmpeg
-4. Run the Development Server
-bash
-Copy code
+### 4. Run the Development Server
 npm run dev
-Open:
 
-arduino
-Copy code
-http://localhost:3000
-
-
-🧪 Application Flow
-
+## Application Flow
 User starts screen recording
 
 Browser captures screen and microphone
@@ -131,8 +112,7 @@ Public share link is generated
 
 Share page tracks views and completion
 
-📊 Analytics Logic
-
+## Analytics Logic
 View Count
 
 Incremented when the public share page loads
@@ -150,7 +130,8 @@ Analytics data persists in:
 
 data/analytics.json
 
-🧠 Architecture Decisions
+
+## Architecture Decisions
 Why MediaRecorder API?
 
 Native browser API
@@ -195,8 +176,7 @@ Limited Safari support due to MediaRecorder API
 
 Basic analytics only
 
-🔮 Improvements for Production
-
+## Improvements for Production
 If this were production-ready, the following improvements would be made:
 
 User authentication and private videos
@@ -217,8 +197,7 @@ Better cross-browser support
 
 UI/UX enhancements
 
-🎬 Demo
-
+## Demo
 A 2–3 minute screen recording demonstrating:
 
 Screen recording
