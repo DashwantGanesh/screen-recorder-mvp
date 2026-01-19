@@ -1,52 +1,49 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
 
-export default function SharePage({ params }: { params: { id: string } }) {
+export default function SharePage() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const videoId = params.id
+  const params = useParams()
 
-  // 1️⃣ Track VIEW when page loads
+  const videoId =
+    params && typeof params.id === 'string' ? params.id : null
+
+  // Track VIEW when page loads
   useEffect(() => {
+    if (!videoId) return
+
     fetch('/api/analytics', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: videoId,
-        type: 'view',
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: videoId, type: 'view' }),
     })
   }, [videoId])
 
-  // 2️⃣ Track COMPLETION when video ends
+  // Track COMPLETION when video ends
   useEffect(() => {
     const video = videoRef.current
-    if (!video) return
+    if (!video || !videoId) return
 
     const handleEnded = () => {
       fetch('/api/analytics', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: videoId,
-          type: 'complete',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: videoId, type: 'complete' }),
       })
     }
 
     video.addEventListener('ended', handleEnded)
-
-    return () => {
-      video.removeEventListener('ended', handleEnded)
-    }
+    return () => video.removeEventListener('ended', handleEnded)
   }, [videoId])
 
+  if (!videoId) {
+    return <p>Loading video...</p>
+  }
+
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: 20 }}>
       <h2>Shared Video</h2>
 
       <video
