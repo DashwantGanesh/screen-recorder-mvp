@@ -48,24 +48,28 @@ The application allows users to record their screen and microphone directly in t
 
 screen-recorder-mvp/
 ├── app/
-│ ├── page.tsx # Home / recorder UI
-│ └── share/[id]/page.tsx # Public share page
+│   ├── page.tsx                  # Home / recorder UI
+│   └── share/
+│       └── [id]/
+│           └── page.tsx          # Public share page
 │
 ├── components/
-│ └── Recorder.tsx # Recording, trimming, upload UI
+│   └── Recorder.tsx              # Recording, trimming, upload UI
 │
 ├── lib/
-│ └── recorder.ts # MediaRecorder logic
+│   └── recorder.ts               # MediaRecorder logic
 │
-├── pages/api/
-│ ├── upload.ts # Upload API
-│ ├── trim.ts # Video trimming API
-│ └── analytics.ts # Analytics API
+├── pages/
+│   └── api/
+│       ├── upload.ts             # Upload API
+│       ├── trim.ts               # Video trimming API
+│       └── analytics.ts          # Analytics API
 │
 ├── data/
-│ └── analytics.json # Persistent analytics storage
+│   └── analytics.json            # Persistent analytics storage
 │
-├── public/uploads/ # Stored video files
+├── public/
+│   └── uploads/                  # Stored video files
 │
 └── README.md
 
@@ -79,18 +83,23 @@ screen-recorder-mvp/
 ```bash
 git clone https://github.com/DashwantGanesh/screen-recorder-mvp
 cd screen-recorder-mvp
+```
 
 
 ### 2. Install Dependencies
+```bash
 npm install
+```
 
 ### 3. Install FFmpeg (Required for Trimming)
+
 Windows
 
 Download from: https://www.gyan.dev/ffmpeg/builds/
 Extract and add the bin folder to PATH
 
 ### 4. Run the Development Server
+```bash
 npm run dev
 ```
 
@@ -165,7 +174,7 @@ Sufficient for MVP validation
 
 Clear upgrade path to a database
 
-🚧 Limitations
+## 🚧 Limitations
 
 No authentication or private videos
 
