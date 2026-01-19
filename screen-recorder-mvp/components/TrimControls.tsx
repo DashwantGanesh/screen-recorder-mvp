@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 export default function TrimControls({ onTrim }: any) {
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(10)
