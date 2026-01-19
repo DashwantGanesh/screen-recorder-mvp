@@ -10,9 +10,9 @@ export default function SharePage() {
   const videoId =
     params && typeof params.id === 'string' ? params.id : null
 
-  // Track VIEW when page loads
+  // Track VIEW
   useEffect(() => {
-    if (!videoId) return
+    if (!videoId) return  // ⬅️ CRITICAL GUARD
 
     fetch('/api/analytics', {
       method: 'POST',
@@ -21,10 +21,11 @@ export default function SharePage() {
     })
   }, [videoId])
 
-  // Track COMPLETION when video ends
+  // Track COMPLETION
   useEffect(() => {
+    if (!videoId) return
     const video = videoRef.current
-    if (!video || !videoId) return
+    if (!video) return
 
     const handleEnded = () => {
       fetch('/api/analytics', {
@@ -45,7 +46,6 @@ export default function SharePage() {
   return (
     <div style={{ padding: 20 }}>
       <h2>Shared Video</h2>
-
       <video
         ref={videoRef}
         controls

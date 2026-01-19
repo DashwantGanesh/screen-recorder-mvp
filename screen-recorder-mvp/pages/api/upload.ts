@@ -2,11 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs'
 import path from 'path'
 
-// IMPORTANT: disable bodyParser because we receive raw binary data
 export const config = {
-  api: {
-    bodyParser: false,
-  },
+  api: { bodyParser: false },
 }
 
 export default function handler(
@@ -15,10 +12,7 @@ export default function handler(
 ) {
   const buffers: Uint8Array[] = []
 
-  req.on('data', (chunk) => {
-    buffers.push(chunk)
-  })
-
+  req.on('data', (chunk) => buffers.push(chunk))
   req.on('end', () => {
     const videoBuffer = Buffer.concat(buffers)
     const id = Date.now().toString()
@@ -36,4 +30,3 @@ export default function handler(
     })
   })
 }
-

@@ -7,6 +7,11 @@ const filePath = path.join(process.cwd(), 'data/analytics.json')
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id, type } = req.body
 
+  // 🛑 SAFETY CHECK
+  if (!id || typeof id !== 'string') {
+    return res.status(400).json({ error: 'Invalid video id' })
+  }
+
   const data = fs.existsSync(filePath)
     ? JSON.parse(fs.readFileSync(filePath, 'utf8'))
     : {}
