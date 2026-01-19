@@ -6,26 +6,26 @@ The application allows users to record their screen and microphone directly in t
 
 ---
 
-## Features
+## 🚀 Features
 
-### Screen Recording
+### 🎥 Screen Recording
 - Record screen + microphone using the MediaRecorder API
 - Start and stop controls
 - Output saved as `.webm`
 - Local preview after recording
 
-### Video Trimming
+### ✂️ Video Trimming
 - User-defined start and end time (in seconds)
 - Server-side trimming using FFmpeg
 - Preview trimmed video
 - Export trimmed video as `.webm`
 
-### Upload & Share
+### ☁️ Upload & Share
 - Upload final (trimmed) video to server (mocked local storage)
 - Generate a public shareable link
 - Public page with embedded video player
 
-### Basic Analytics
+### 📊 Basic Analytics
 - Track view count when share page loads
 - Track completion when video finishes playing
 - Persistent analytics stored in a JSON file
@@ -44,7 +44,7 @@ The application allows users to record their screen and microphone directly in t
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 screen-recorder-mvp/
 ├── app/
@@ -69,6 +69,8 @@ screen-recorder-mvp/
 │
 └── README.md
 
+yaml
+Copy code
 
 ---
 
@@ -79,21 +81,42 @@ screen-recorder-mvp/
 ```bash
 git clone https://github.com/DashwantGanesh/screen-recorder-mvp
 cd screen-recorder-mvp
-
-
-### 2. Install Dependencies
+2. Install Dependencies
+bash
+Copy code
 npm install
-
-### 3. Install FFmpeg (Required for Trimming)
+3. Install FFmpeg (Required for Trimming)
 Windows
-
 Download from: https://www.gyan.dev/ffmpeg/builds/
-Extract and add the bin folder to PATH
 
-### 4. Run the Development Server
+Extract the archive
+
+Add the bin folder to your system PATH
+
+Example:
+
+text
+Copy code
+C:\ffmpeg\ffmpeg-8.0.1-essentials_build\bin
+Verify installation:
+
+bash
+Copy code
+ffmpeg -version
+macOS
+bash
+Copy code
+brew install ffmpeg
+4. Run the Development Server
+bash
+Copy code
 npm run dev
+Open your browser at:
 
-## Application Flow
+arduino
+Copy code
+http://localhost:3000
+🧪 Application Flow
 User starts screen recording
 
 Browser captures screen and microphone
@@ -112,7 +135,7 @@ Public share link is generated
 
 Share page tracks views and completion
 
-## Analytics Logic
+📊 Analytics Logic
 View Count
 
 Incremented when the public share page loads
@@ -123,17 +146,16 @@ Incremented when the video finishes playing
 
 Completion Percentage
 
+scss
+Copy code
 (completed / views) * 100
-
-
 Analytics data persists in:
 
+bash
+Copy code
 data/analytics.json
-
-
-## Architecture Decisions
+🧠 Architecture Decisions
 Why MediaRecorder API?
-
 Native browser API
 
 No external libraries required
@@ -141,7 +163,6 @@ No external libraries required
 Best choice for in-browser screen recording
 
 Why Server-Side FFmpeg?
-
 More reliable and faster than browser-based processing
 
 Handles large files efficiently
@@ -149,7 +170,6 @@ Handles large files efficiently
 Cleaner separation between frontend and video processing
 
 Why Local Storage Instead of Cloud?
-
 Keeps MVP simple
 
 Avoids cloud configuration overhead
@@ -157,7 +177,6 @@ Avoids cloud configuration overhead
 Easily replaceable with S3 or Cloudflare R2
 
 Why JSON for Analytics?
-
 Lightweight and persistent
 
 Sufficient for MVP validation
@@ -165,7 +184,6 @@ Sufficient for MVP validation
 Clear upgrade path to a database
 
 🚧 Limitations
-
 No authentication or private videos
 
 No duplicate view protection
@@ -176,7 +194,7 @@ Limited Safari support due to MediaRecorder API
 
 Basic analytics only
 
-## Improvements for Production
+🔮 Improvements for Production
 If this were production-ready, the following improvements would be made:
 
 User authentication and private videos
@@ -197,7 +215,7 @@ Better cross-browser support
 
 UI/UX enhancements
 
-## Demo
+🎬 Demo
 A 2–3 minute screen recording demonstrating:
 
 Screen recording
@@ -211,4 +229,4 @@ Public playback
 Analytics tracking
 
 🔗 Demo Video Link:
-https://drive.google.com/file/d/1gfNRbqtGe7axV9FEtFhin3P6R_QNhnqo/view?usp=sharing
+(Paste your Google Drive / Loom / YouTube link here)
