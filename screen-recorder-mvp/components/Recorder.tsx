@@ -51,24 +51,22 @@ export default function Recorder() {
   }
 
   return (
-    <div style={{ marginTop: 20 }}>
-      <button onClick={startRecording}>Start Recording</button>
-      <button onClick={stopRecording} style={{ marginLeft: 10 }}>
-        Stop Recording
-      </button>
+    <div className="mt">
+      <div className="flex">
+        <button onClick={startRecording}>Start Recording</button>
+        <button className="secondary" onClick={stopRecording}>
+          Stop Recording
+        </button>
+      </div>
 
       {videoBlob && (
         <>
-          <h3>Original Preview</h3>
-          <video
-            controls
-            width="500"
-            src={URL.createObjectURL(videoBlob)}
-          />
+          <h3 className="mt">Original Video</h3>
+          <video controls src={URL.createObjectURL(videoBlob)} />
 
-          <div style={{ marginTop: 10 }}>
+          <div className="flex mt">
             <label>
-              Start (sec):
+              Start
               <input
                 type="number"
                 value={startTime}
@@ -76,8 +74,8 @@ export default function Recorder() {
               />
             </label>
 
-            <label style={{ marginLeft: 10 }}>
-              End (sec):
+            <label>
+              End
               <input
                 type="number"
                 value={endTime}
@@ -85,37 +83,31 @@ export default function Recorder() {
               />
             </label>
 
-            <button onClick={trimVideo} style={{ marginLeft: 10 }}>
-              Trim Video
-            </button>
+            <button onClick={trimVideo}>Trim</button>
           </div>
         </>
       )}
 
       {trimmedBlob && (
         <>
-          <h3>Trimmed Preview</h3>
-          <video
-            controls
-            width="500"
-            src={URL.createObjectURL(trimmedBlob)}
-          />
+          <h3 className="mt">Trimmed Video</h3>
+          <video controls src={URL.createObjectURL(trimmedBlob)} />
         </>
       )}
 
       {(videoBlob || trimmedBlob) && (
-        <button onClick={uploadVideo} style={{ marginTop: 10 }}>
+        <button className="mt" onClick={uploadVideo}>
           Upload & Generate Share Link
         </button>
       )}
 
       {shareUrl && (
-        <p>
+        <div className="share">
           Share link:{' '}
           <a href={shareUrl} target="_blank">
             {shareUrl}
           </a>
-        </p>
+        </div>
       )}
     </div>
   )

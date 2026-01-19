@@ -43,15 +43,17 @@ export default function SharePage() {
     return <p>Loading video...</p>
   }
 
-  return (
-    <div style={{ padding: 20 }}>
+return (
+  <div className="page">
+    <div className="card">
       <h2>Shared Video</h2>
       <video
         ref={videoRef}
         controls
-        width="600"
         src={`/uploads/${videoId}.webm`}
       />
     </div>
-  )
+  </div>
+)
+
 }
